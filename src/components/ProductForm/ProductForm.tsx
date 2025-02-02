@@ -10,7 +10,7 @@ import MultiSelect from './MultiSelect';
 import { useForm } from 'react-hook-form';
 
 interface SubmitData {
-  id: string;
+  id: number;
   productName: string;
   price: number;
   color: string[];
@@ -22,7 +22,7 @@ interface SubmitData {
 const ProductForm = () => {
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [selectedSize, setSelectedSize] = useState<string[]>([]);
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<File[]>([]);
   const dispatch = useAppDispatch();
 
   // react-hook-form setup
@@ -34,7 +34,7 @@ const ProductForm = () => {
   const onSubmit = (data: SubmitData) => {
     const finalData = {
       ...data,
-      id: Date.now().toString(),
+      id: Date.now(),
       color: selectedColors,
       size: selectedSize,
       images
@@ -48,10 +48,9 @@ const ProductForm = () => {
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    const newImages = files.map((file) => URL.createObjectURL(file)); // Temporary URLs
-    setImages((prev) => [...prev, ...newImages]); // Store images in state
-  };
+      const files = Array.from(e.target.files || []);
+      setImages((prev) => [...prev, ...files]); // Store files in state
+    };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>

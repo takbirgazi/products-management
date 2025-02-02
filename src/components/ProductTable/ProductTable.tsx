@@ -39,7 +39,7 @@ const ProductTable = () => {
             <TableCell className="flex gap-1">
               {product.images.map((img, i) => (
                 <figure key={i}>
-                  <Image className="border rounded h-10 w-10" width={40} height={40} src={img} alt="" />
+                  <Image className="border rounded h-10 w-10" width={40} height={40} src={URL.createObjectURL(img)} alt="" />
                 </figure>
               ))}
             </TableCell>
