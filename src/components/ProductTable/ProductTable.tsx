@@ -16,7 +16,7 @@ interface SubmitData {
   color: string[];
   size: string[];
   category: string;
-  images: string[];
+  images: File[];
 }
 
 const ProductTable = () => {

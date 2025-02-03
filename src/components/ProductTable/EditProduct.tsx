@@ -15,7 +15,7 @@ interface SubmitData {
     color: string[];
     size: string[];
     category: string;
-    images: string[];
+    images: File[];
 }
 
 const EditProduct = ({ initialValues, setIsEditModalOpen }: { initialValues: SubmitData, setIsEditModalOpen: (isOpen: boolean) => void }) => {
@@ -25,7 +25,7 @@ const EditProduct = ({ initialValues, setIsEditModalOpen }: { initialValues: Sub
     const [nameValue, setNameValue] = useState(initialValues.productName);
     const [price, setPrice] = useState(initialValues.price);
     const dispatch = useAppDispatch();
-    console.log(initialValues)
+
     // react-hook-form setup
     const { handleSubmit, reset, register, setValue, watch } = useForm<SubmitData>();
 
@@ -60,7 +60,7 @@ const EditProduct = ({ initialValues, setIsEditModalOpen }: { initialValues: Sub
         setSelectedSize(initialValues.size);
         setValue("category", initialValues.category)
     }, [initialValues, setValue])
-    console.log(initialValues.id)
+
     return (
         <form onSubmit={handleSubmit(update)} className='flex flex-col gap-4'>
 
