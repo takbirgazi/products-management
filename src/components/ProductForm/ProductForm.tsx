@@ -48,9 +48,9 @@ const ProductForm = () => {
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const files = Array.from(e.target.files || []);
-      setImages((prev) => [...prev, ...files]); // Store files in state
-    };
+    const files = Array.from(e.target.files || []);
+    setImages((prev) => [...prev, ...files]); // Store files in state
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
@@ -116,7 +116,7 @@ const ProductForm = () => {
       </div>
 
       <div className='flex justify-start w-28'>
-        <Input className='bg-blue-500 text-white' type='submit' />
+        <Input className='bg-blue-500 text-white cursor-pointer' type='submit' />
       </div>
     </form>
   );
